@@ -1,0 +1,50 @@
+{% extends 'my_vocab/base.html' %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12" id="title">
+			<h1>Knowcabulary!</h1>
+			<p>Test your knowledge of some sweet ass adjectives</p>
+		</div>
+	</div>
+</div>
+<div class="header">	
+	<h2 id="announce">The word is: "{{word}}"</h2>
+	<h3 id="timer">10</h3>
+</div>
+<!-- <h4>
+	<ul>
+		{% for i in result%}
+			<li>{{i.text}}</li>
+		{% endfor %}
+	</ul>
+</h4> -->
+<form method="POST" action="/guess">
+	{% csrf_token %}
+	<input class="form-control" id="guessform" type="text" name="guess" placeholder="guess here!">
+	<input type="submit" value="Submit">
+</form>
+<h2>
+		{% for i in request.session.guessed %}
+			{% if not user.is_authenticated %}
+				<li>
+					{{i}}
+				</li>
+			{% else %}
+				<li>
+  					<a class="link">{{i}}</a>
+				</li>
+			{% endif %}
+			{% for j in result %}
+				{% if i == j.text %}
+					<p style="color:green">Got one!</p>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}	
+</h2>
+
+<a href="{% url 'reset' %}" class="btn btn-lg">New Game</a>
+
+{% endblock %}

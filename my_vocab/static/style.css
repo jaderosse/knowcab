@@ -1,0 +1,70 @@
+body {
+	text-align: center;
+	background-image: url('books.jpeg');
+	font-family: 'Slabo 27px', serif;
+}
+
+li {
+    list-style-type: none;
+    color: #FEF6E7;
+}
+
+.header {
+	background-color: #FEF6E7;
+	opacity: .7;
+	border-radius: 30px;
+	height: 150px;
+	width: 50%;
+	margin: 0 auto;
+}
+
+h1 {
+	color: #3a88b2;
+	font-weight: bold;
+}
+
+#timer {
+	font-size: 52px;
+}
+
+#title {
+	text-align: left;
+	background-color: #FEF6E7;
+	width: 100%;
+}
+
+.btn {
+	background-color: #FEF6E7;
+	margin-top: 25%;
+}
+
+input {
+	margin-top: 30px;
+	text-align: center;
+	color: #3a88b2;
+}
+
+.dict {
+	color: #FEF6E7;
+}
+
+.defs {
+	font-size: 20px;
+	color: white;
+}
+
+#synonym {
+	background-color: #3a88b2;
+	color: white;
+	height: 200px;
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 25%;
+	font-size: 50px;
+	border-radius: 10px;
+}
+
+#guessform {
+	height: 50px;
+	font-size: 25px;
+}

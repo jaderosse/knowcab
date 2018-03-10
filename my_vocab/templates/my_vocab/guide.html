@@ -1,0 +1,9 @@
+{% extends 'my_vocab/base.html' %}
+
+{% block content %}
+	<h1>Study Guide</h1>
+	{% for item in items %}
+		<h2 class="dict">{{item.word}}</h2>
+		<p class="defs"><em>{{item.definition}}</em></p>
+	{% endfor %}
+{% endblock %}

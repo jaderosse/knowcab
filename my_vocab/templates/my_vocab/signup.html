@@ -1,0 +1,25 @@
+{% extends 'my_vocab/base.html' %}
+
+{% block content %}
+  {% if error %}
+    <div class="alert alert-warning">
+      <strong>Error!</strong> {{error}}
+    </div>
+  {% endif %}
+
+  <h1>Sign Up</h1>
+  <form method="POST" action="/signup">
+  	{% csrf_token %}
+  	<div class="form-group">
+  		<label>First Name:</label>
+  		<input type="text" name="firstname" class="form-control" placeholder="First name">
+  		<label>Last Name:</label>
+  		<input type="text" name="lastname" class="form-control" placeholder="Last name">
+  		<label>Userame:</label>
+  		<input type="text" name="username" class="form-control" placeholder="Display name">
+  		<label>Password:</label>
+  		<input type="password" name="password" class="form-control" placeholder="Password">
+  	</div>
+  	<input type="submit" value="Sign Up!" class="btn btn-primary">
+  </form>
+{% endblock %}
