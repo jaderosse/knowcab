@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
-from wordnik import *
+
 from collections import defaultdict
 from .models import Study
 import requests
@@ -14,10 +14,6 @@ from django.utils.html import strip_tags
 from threading import Timer
 import threading
 from django.conf import settings
-
-apiUrl = 'http://api.wordnik.com/v4'
-apiKey = 'YOUR API KEY HERE'
-client = swagger.ApiClient(apiKey, apiUrl)
 
 word_obj = ['happy', 'easy', 'cold', 'nice', 'full']
 word = random.choice(word_obj)
@@ -45,6 +41,13 @@ def index(request):
 			request.session['guessed'] = saved
 		guessed = request.session.get('guessed')
 		return render(request, 'my_vocab/index.html', {'result': result, 'guessed': guessed, 'word':word})
+
+def correct_class(value):
+	if 'class' in attrs:
+		value['class'] += "correct"
+	else:
+		value['class'] = "correct"
+	return value
 
 def guide(request):
 	if request.method == 'GET':
@@ -109,7 +112,6 @@ def logout(request):
     return redirect('index')
 
 def reset(request):
-	word = random.choice(word_obj)
 	request.session.flush()
 	return redirect('index')
 
